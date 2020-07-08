@@ -1,29 +1,34 @@
 
 let randomNumber = Math.floor(Math.random() * 100);
 let history = []
-let guessesRemaining = 3;
+let GUESS_LIMIT = 3;
+let guessesRemaining = GUESS_LIMIT;
+let active = false;
 
 function guessNumber() {
-    guessesRemaining--;
+
     if (guessesRemaining >= 1) {
-        document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining}`
+        document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining-1}`
+        console.log(randomNumber)
+
+        let userNumber = document.getElementById("guessingArea").value
+        console.log(userNumber, "radom", randomNumber)
+        history.push(userNumber);
+        if (userNumber > randomNumber) {
+            document.getElementById("resultArea").innerHTML = `Too high`
+        } else if (userNumber < randomNumber) {
+            document.getElementById("resultArea").innerHTML = `Too low`
+        } else if (userNumber == randomNumber) {
+            document.getElementById("resultArea").innerHTML = `Correct`
+        }
+        console.log(history)
+        document.getElementById("historyArea").innerHTML = `History: ${history}`
     } else {
         document.getElementById("warning").innerHTML = `Game over`
     }
-    console.log(randomNumber)
+    guessesRemaining--;
+    document.getElementById("guessingArea").value='';
 
-    let userNumber = document.getElementById("guessingArea").value
-    console.log(userNumber, "radom", randomNumber)
-    history.push(userNumber);
-    if (userNumber > randomNumber) {
-        document.getElementById("resultArea").innerHTML = `To high`
-    } else if (userNumber < randomNumber) {
-        document.getElementById("resultArea").innerHTML = `To low`
-    } else if (userNumber == randomNumber) {
-        document.getElementById("resultArea").innerHTML = `Correct`
-    }
-    console.log(history)
-    document.getElementById("historyArea").innerHTML = `History: ${history}`
 }
 
 
@@ -31,15 +36,21 @@ function reset() {
     location.reload();
 }
 
-
-let time = 30;
+const INTERVAL = 30;
+let time = INTERVAL;
 let myTime;
 
 function timeOut() {
+    document.getElementById("guessingArea").disabled = true;
+    document.getElementById("guessBtn").disabled = true;
     clearInterval(myTime);
 }
 
 function getReady(){
+    active = true;
+    document.getElementById("guessingArea").disabled = false;
+    document.getElementById("guessBtn").disabled = false;
+    document.getElementById("getReadyBtn").disabled = true
     function timecounting() {
         myTime = setInterval(() => {
             time -= 1
