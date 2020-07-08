@@ -1,0 +1,36 @@
+.fs{
+    display:flex;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    align-items: center;
+    justify-content:center;
+}
+
+.style-1{
+        font-family: monospace;
+        font-size:50px;
+}
+
+.style-b1{
+    margin-top: 10px;
+    border-radius: 12px;
+    width:100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: aqua;
+}
+
+.style-b1:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    background-color:rgb(10, 190, 49);
+    border-radius: 12px;
+}
+
+footer{
+    /* display:flex;
+    align-items: center;
+    justify-content: center; */
+    height:30px;
+}

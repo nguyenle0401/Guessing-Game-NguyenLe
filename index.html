@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container-fluid text-body bg-warning text-center fs">
+        <div class="v-center border border-secondary rounded p-5 w-75">
+            <h1 class="font-weight-bold style-1">Number Guessing Game</h1>
+            <h3 id="timecount"></h3>
+            <h3 id="youLost"></h3>
+            <h3>You have 3 times guess</h3>
+            <h2 id="resultArea">Result compare</h2>
+            <div>
+                <input type="number" id='guessingArea'>
+            </div>
+            <button class="style-b1" onclick="guessNumber()">Guess</button>
+            <button class="style-b1" type="button" onclick="reset()">Reset</button>
+            <h3 id="guesstime">Guess Time</h3>
+            <h3 id="warning"></h3>
+            <div id="historyArea">History</div>
+            <script src="script.js"></script>
+
+        </div>
+        <!-- <footer>
+       <span> Built with ️❤️ by <a href="https://github.com/nguyenle0401">Nguyen Le</a></span>
+    </footer> -->
+    </div>
+</body>
+
+
+</html>
