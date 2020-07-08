@@ -4,30 +4,48 @@ let history = []
 let GUESS_LIMIT = 3;
 let guessesRemaining = GUESS_LIMIT;
 let active = false;
+let win = false;
+const INTERVAL = 30;
+let time = INTERVAL;
+let myTime;
 
 function guessNumber() {
-
-    if (guessesRemaining >= 1) {
         document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining-1}`
         console.log(randomNumber)
 
         let userNumber = document.getElementById("guessingArea").value
         console.log(userNumber, "radom", randomNumber)
-        history.push(userNumber);
-        if (userNumber > randomNumber) {
-            document.getElementById("resultArea").innerHTML = `Too high`
-        } else if (userNumber < randomNumber) {
-            document.getElementById("resultArea").innerHTML = `Too low`
-        } else if (userNumber == randomNumber) {
-            document.getElementById("resultArea").innerHTML = `Correct`
+        if(history.includes(userNumber)){
+            document.getElementById("resultArea").innerHTML =`You entered the number ${userNumber} already`;
         }
-        console.log(history)
-        document.getElementById("historyArea").innerHTML = `History: ${history}`
-    } else {
-        document.getElementById("warning").innerHTML = `Game over`
-    }
-    guessesRemaining--;
-    document.getElementById("guessingArea").value='';
+        else {
+            history.push(userNumber);
+            if (userNumber > randomNumber) {
+                document.getElementById("resultArea").innerHTML = `Too high`
+            } else if (userNumber < randomNumber) {
+                document.getElementById("resultArea").innerHTML = `Too low`
+            } else if (userNumber == randomNumber) {
+                document.getElementById("resultArea").innerHTML = `Correct`
+                win = true;
+            }
+            console.log(history)
+            if (win) {
+                clearInterval(myTime);
+                document.getElementById("warning").innerHTML = `You win`
+                document.getElementById("time-guess").innerHTML=`Mystery number:${randomNumber}`;
+            }
+            else {
+                document.getElementById("historyArea").innerHTML = `History: ${history}`
+                if (guessesRemaining === 1) {
+                    document.getElementById("warning").innerHTML = `Game over`
+                    document.getElementById("time-guess").innerHTML=`Mystery number:${randomNumber}`;
+                }
+                guessesRemaining--;
+                
+            }
+        }
+        document.getElementById("guessingArea").value='';
+
 
 }
 
@@ -36,21 +54,21 @@ function reset() {
     location.reload();
 }
 
-const INTERVAL = 30;
-let time = INTERVAL;
-let myTime;
+
 
 function timeOut() {
     document.getElementById("guessingArea").disabled = true;
     document.getElementById("guessBtn").disabled = true;
     clearInterval(myTime);
+    document.getElementById("time-guess").innerHTML=`Mystery number:${randomNumber}`;
 }
 
 function getReady(){
     active = true;
     document.getElementById("guessingArea").disabled = false;
     document.getElementById("guessBtn").disabled = false;
-    document.getElementById("getReadyBtn").disabled = true
+    document.getElementById("getReadyBtn").disabled = true;
+    document.getElementById("time-guess").innerHTML='';
     function timecounting() {
         myTime = setInterval(() => {
             time -= 1
