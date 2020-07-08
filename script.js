@@ -5,7 +5,7 @@ let guessesRemaining = 3;
 
 function guessNumber() {
     guessesRemaining--;
-    if (guessesRemaining >= 0) {
+    if (guessesRemaining >= 1) {
         document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining}`
     } else {
         document.getElementById("warning").innerHTML = `Game over`
@@ -23,7 +23,7 @@ function guessNumber() {
         document.getElementById("resultArea").innerHTML = `Correct`
     }
     console.log(history)
-    document.getElementById("historyArea").innerHTML = `history: ${history}`
+    document.getElementById("historyArea").innerHTML = `History: ${history}`
 }
 
 
@@ -31,24 +31,28 @@ function reset() {
     location.reload();
 }
 
+
 let time = 30;
 let myTime;
 
 function timeOut() {
     clearInterval(myTime);
-};
-
-function timecounting() {
-    myTime = setInterval(() => {
-        time -= 1
-        if (time === 0) {
-            timeOut()
-            document.getElementById("youLost").innerHTML = "You lost"
-        }
-        document.getElementById('timecount').innerHTML = time
-    }, 1000)
 }
-timecounting()
+
+function getReady(){
+    function timecounting() {
+        myTime = setInterval(() => {
+            time -= 1
+            if (time === 0) {
+                timeOut()
+                document.getElementById("youLost").innerHTML = "You lost😭"
+            }
+            document.getElementById('timecount').innerHTML = `⏱`+ time +`s`}, 1000);
+    }
+    timecounting()
+}
+
+
 
 
 

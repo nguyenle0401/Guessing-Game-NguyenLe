@@ -5,6 +5,7 @@
     position: absolute;
     align-items: center;
     justify-content:center;
+    background-image:url(https://media.giphy.com/media/l0Ex3vQtX5VX2YtAQ/giphy.gif);
 }
 
 .style-1{
@@ -18,13 +19,30 @@
     width:100px;
     height: 30px;
     font-weight: bold;
-    background-color: aqua;
+    background-color:green;
+    color: white;
+    font-family: monospace;
 }
 
 .style-b1:hover{
     cursor: pointer;
     opacity: 0.8;
-    background-color:rgb(10, 190, 49);
+    background-color:orange;
+    border-radius: 12px;
+}
+.style-b2{
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    width:300px;
+    height: 70px;
+    font-weight: bold;
+    background-color:yellow;
+}
+.style-b2:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    background-color:red;
     border-radius: 12px;
 }
 
@@ -33,4 +51,34 @@ footer{
     align-items: center;
     justify-content: center; */
     height:30px;
+}
+ 
+.time-guess{
+    font-size: 20px;
+}
+#guesstime{
+    font-size: 20px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-weight: bold;
+}
+.style-bg{
+    background: rgba(55, 232, 238, 0.9);
+}
+#historyArea{
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 17px;
+}
+#timecount{
+    color:red;
+}
+#resultArea{
+    font-size: 17px;
+    font-weight: bold;
+}
+#warning{
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: bold;
 }
