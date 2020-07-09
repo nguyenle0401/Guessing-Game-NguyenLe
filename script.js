@@ -10,8 +10,8 @@ let time = INTERVAL;
 let myTime;
 
 function guessNumber() {
-        document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining-1}`
-        console.log(randomNumber)
+        // document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining-1}`
+        // console.log(randomNumber)
 
         let userNumber = document.getElementById("guessingArea").value
         console.log(userNumber, "radom", randomNumber)
@@ -40,14 +40,17 @@ function guessNumber() {
                     document.getElementById("warning").innerHTML = `Game over`
                     document.getElementById("time-guess").innerHTML=`Mystery number:${randomNumber}`;
                 }
+                document.getElementById("guesstime").innerHTML = `Guess time ${guessesRemaining-1}`
+        console.log(randomNumber)
                 guessesRemaining--;
                 
             }
         }
         document.getElementById("guessingArea").value='';
-
+        
 
 }
+
 
 
 function reset() {
@@ -82,7 +85,17 @@ function getReady(){
 }
 
 
-
+// function reset(){
+//     guessesRemaining = 3
+//     randomNumber = Math.floor(Math.random()*100)+1
+//     history = []
+//     document.getElementById("guessArea").value='';
+//     document.getElementById("resultArea").value='';
+//     document.getElementById("remainrea").value='';
+//     document.getElementById("historyArea").value='';
+//     console.log(randomNumber)
+//     document,getElementById("guessButton").disabled=false
+// }
 
 
 
