@@ -13,7 +13,7 @@ function guessNumber() {
         let userNumber = document.getElementById("guessingArea").value
         console.log(userNumber, "radom", randomNumber)
         if( userNumber <= 0 || userNumber > 100){
-            document.getElementById("resultArea").innerHTML =`Please enter 1 to 100 ${userNumber} already`;
+            document.getElementById("resultArea").innerHTML =`Please enter 0 to 100 ${userNumber} already`;
         }else{
         if(history.includes(userNumber)){
             document.getElementById("resultArea").innerHTML =`You entered the number ${userNumber} already`;
